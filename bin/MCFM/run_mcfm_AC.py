@@ -179,7 +179,7 @@ class RunMcfmOP():
 			substr+='gridfileexists=false \nwhile [ ${gridfileexists} = false ]; do gridfile=($(ls|grep _grid)); if [ ${#gridfile[@]} -eq 1 ]; then gridfileexists=true; else sleep 2m; fi; done \n'
 			substr+="mv ${gridfile[0]} %s_grid \nchmod 755 runcmsgrid.sh \nrm *.lhe \n"%(self.args.datasetname)
  			substr+='cp ../adjlheevent.py ./ \n'
-			substr+='rm -rf CMSSW*\n'
+			substr+='rm -rf CMSSW* .git\n'
 			substr+='echo tarball will be found at ${basedir} \n'
 			substr+='tar -cvzf ${basedir}/MCFM_%s_%s_%s_%s.tgz ./ \n' % (self.args.method, self.args.scram_arch, self.args.cmssw, self.args.datasetname)
 			substr+='#cleaning up part\n'
